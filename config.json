@@ -1,0 +1,27 @@
+{
+  "host": "127.0.0.1",
+  "port": 5000,
+  "output_dir": "output",
+  "allowed_networks": [
+    "127.0.0.0/8",
+    "::1/128",
+    "10.0.0.0/8",
+    "172.16.0.0/12",
+    "192.168.0.0/16"
+  ],
+  "scan": {
+    "timing": "T3",
+    "top_ports": 1000,
+    "port_spec": "",
+    "timeout_seconds": 300,
+    "skip_host_discovery": false,
+    "use_nse": true
+  },
+  "nse_scripts": [
+    "ftp-anon",
+    "http-methods",
+    "ssl-enum-ciphers",
+    "sslv2",
+    "smb-security-mode"
+  ]
+}

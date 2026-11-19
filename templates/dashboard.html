@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Port Scan and Vulnerability Assessment</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<header class="top">
+  <h1>Port Scan and Vulnerability Assessment</h1>
+  <p>Finds open ports and services on a machine you own, then reports security concerns with evidence.</p>
+</header>
+
+<main>
+  <div class="notice" role="note">
+    <strong>Only scan systems that you are explicitly authorized to test.</strong>
+    Use localhost, your own computer, or a lab machine. This tool does not exploit anything.
+  </div>
+
+  <section class="panel" aria-labelledby="scan-title">
+    <h2 id="scan-title">Start a scan</h2>
+    <form id="scan-form" novalidate>
+      <label for="target">Target IP address or hostname</label>
+      <div class="row">
+        <input id="target" name="target" type="text" placeholder="127.0.0.1" autocomplete="off" spellcheck="false">
+        <button id="scan-btn" type="submit">Start scan</button>
+      </div>
+      <label class="check">
+        <input id="authorized" type="checkbox">
+        I confirm I am explicitly authorized to test this target.
+      </label>
+      <p id="form-error" class="error" role="alert" hidden></p>
+    </form>
+
+    <ol id="stages" class="stages" aria-label="Scan progress">
+      <li data-stage="validating">Validate target</li>
+      <li data-stage="scanning">Scan with Nmap</li>
+      <li data-stage="analysing">Assess findings</li>
+      <li data-stage="completed">Write reports</li>
+    </ol>
+    <p id="status-message" class="status-message" aria-live="polite">Ready. Enter an authorized target.</p>
+  </section>
+
+  <section class="tiles" aria-label="Scan summary">
+    <div><span>Target</span><strong id="t-target">-</strong></div>
+    <div><span>Scan status</span><strong id="t-status">Idle</strong></div>
+    <div><span>Scan time</span><strong id="t-time">-</strong></div>
+    <div><span>Open ports</span><strong id="t-ports">0</strong></div>
+    <div><span>Services identified</span><strong id="t-services">0</strong></div>
+    <div><span>Findings</span><strong id="t-findings">0</strong></div>
+  </section>
+
+  <section class="panel" aria-labelledby="sev-title">
+    <h2 id="sev-title">Severity summary</h2>
+    <div id="severity" class="severity"></div>
+  </section>
+
+  <section class="panel" aria-labelledby="ports-title">
+    <h2 id="ports-title">Open ports and services</h2>
+    <div class="scroll">
+      <table>
+        <thead><tr><th>Port</th><th>Protocol</th><th>State</th><th>Service</th><th>Product</th><th>Version</th></tr></thead>
+        <tbody id="ports-body"><tr><td colspan="6" class="empty">No scan results yet.</td></tr></tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="panel" aria-labelledby="find-title">
+    <h2 id="find-title">Security findings</h2>
+    <div id="findings"><p class="empty">No scan results yet.</p></div>
+  </section>
+
+  <section class="panel" aria-labelledby="rep-title">
+    <h2 id="rep-title">JSON reports</h2>
+    <div class="reports">
+      <div>
+        <strong>port_scan.json</strong>
+        <button type="button" data-view="port_scan.json">View</button>
+        <a href="/files/port_scan.json?download=1">Download</a>
+      </div>
+      <div>
+        <strong>vulnerabilities.json</strong>
+        <button type="button" data-view="vulnerabilities.json">View</button>
+        <a href="/files/vulnerabilities.json?download=1">Download</a>
+      </div>
+    </div>
+    <pre id="json-view" hidden></pre>
+  </section>
+</main>
+<script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
