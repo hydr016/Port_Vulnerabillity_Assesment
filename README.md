@@ -1,4 +1,4 @@
-# Port Scanning and Vulnerability Assessment (Module 2)
+# Port Scanning and Vulnerability Assessment
 
 > **Only scan systems that you are explicitly authorized to test.**
 
