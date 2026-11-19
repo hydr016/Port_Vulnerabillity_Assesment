@@ -132,33 +132,7 @@ python -m unittest discover -s tests -v
    "confidence": "Medium", "category": "exposure"}]}
 ```
 
-## How to Explain This Project in Viva
-* **Port scanning:** knocking on a machine's numbered doors (ports) to see which answer.
-* **Why check open ports?** Each open port is a possible entry point; unused ones should be closed.
-* **Service:** the program listening behind a port, e.g. SSH on 22, a web server on 80.
-* **Why identify versions?** Old versions may have known bugs; the version tells us what to check.
-* **Vulnerability assessment:** a health check that lists possible weaknesses and how to fix them, without attacking.
-* **Evidence:** the real data from the scan that justifies a finding, so nobody has to trust us blindly.
-* **Severity:** ranks how urgent a finding is (Informational to Critical) so fixes are prioritised.
-* **Recommendations:** a finding without advice is not useful; each one says what to do.
-* **Why authorization?** Scanning others' systems without permission is illegal and can disrupt them; permission is what separates security work from attacking.
-* **Weakness vs exploitation:** finding a weakness is noticing an unlocked window; exploiting it is climbing through. This project only notices and reports.
 
-## Screenshot Procedure
-Take every screenshot from a real run on your own/lab machine. Do not edit or fabricate them.
-1. Terminal showing `python app.py` running (with the authorization line).
-2. Dashboard home page (before scanning).
-3. Target entered, authorization box ticked, notice visible.
-4. Scan in progress (progress steps highlighted; take it quickly after clicking Start).
-5. Completed scan with the summary tiles and severity summary.
-6. Open ports/services table.
-7. Findings with evidence and recommendations (scroll; capture several).
-8. Invalid target error (e.g. `8.8.8.8`).
-9. `output/port_scan.json` (open in an editor or via the View button).
-10. `output/vulnerabilities.json`.
-11. Folder view of `output/` showing both files with timestamps.
-12. `python -m unittest discover -s tests -v` result in the terminal.
-Add a caption with the target IP, date and a note that it is your own lab system.
 
 ## Authorization statement
 This software is for educational use on systems you own or have explicit written permission to test. It contains no exploitation, stealth, evasion, credential attacks or denial-of-service features. You are responsible for how you use it.
